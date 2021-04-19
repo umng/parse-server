@@ -1,15 +1,12 @@
-const Config = require('../lib/Config');
+const Config = require('../../lib/Config');
 const Parse = require('parse/node');
 
 const className = 'AnObject';
 const defaultRoleName = 'tester';
 
-let schemaCache;
-
 module.exports = {
   /* AnObject */
   className,
-  schemaCache,
 
   /**
    * Creates and returns new user.
@@ -35,10 +32,7 @@ module.exports = {
    * @param {string} [password='password'] - optional, defaults to "password" if not set;
    */
   logIn: async (userObject, password) => {
-    return await Parse.User.logIn(
-      userObject.getUsername(),
-      password || 'password'
-    );
+    return await Parse.User.logIn(userObject.getUsername(), password || 'password');
   },
 
   /**
